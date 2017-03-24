@@ -12,7 +12,7 @@ Quick Start
 
 This image uses ENTRYPOINT to run the containers as an executable. 
 
-    docker run -d -p 8388:8388/tcp -p 8388:8388/udp smounives/shadowsocksr-docker -s 0.0.0.0 -p 8388 -k mypassword -m aes-256-cfb -o tls1.2_ticket_auth_compatible -O auth_sha1_v2_compatible
+    docker run -d -p 8388:8388/tcp -p 8388:8388/udp smounives/shadowsocksr-docker -s 0.0.0.0 -p 8388 -k mypassword -m aes-256-cfb -o tls1.2_ticket_auth -O auth_sha1_v4
 
 You can configure the service to run on a port of your choice. Just make sure the port number given to Docker is the same as the one given to ShadowsocksR.
 
