@@ -6,6 +6,8 @@ RUN set -ex \
     && apk --update add --no-cache libsodium py-pip \
     && pip --no-cache-dir install https://github.com/shadowsocksr/shadowsocksr/archive/manyuser.zip
 
+COPY docker-entry.sh /docker-entry.sh
+
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
 ENV PASSWORD=
@@ -14,12 +16,7 @@ ENV PROTOCOL origin
 ENV TIMEOUT 300
 ENV OBFS plain
 
-ENTRYPOINT ["/usr/bin/ssserver"]
-CMD ssserver -s "$SERVER_ADDR" \
-             -p "$SERVER_PORT" \
-             -m "$METHOD"      \
-             -k "$PASSWORD"    \
-             -t "$TIMEOUT"     \
-             -O "$PROTOCOL"    \
-             -o "$OBFS"        \
-             --fast-open $OPTIONS
+ENTRYPOINT ["/docker-entry.sh"]
+CMD ["server"]
+EXPOSE 8388
+
