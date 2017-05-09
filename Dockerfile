@@ -9,7 +9,7 @@ RUN set -ex \
 COPY docker-entry.sh /docker-entry.sh
 
 ENV SERVER_ADDR 0.0.0.0
-ENV SERVER_PORT 8388
+ENV SERVER_PORT 443
 ENV PASSWORD=
 ENV METHOD aes-256-cfb
 ENV PROTOCOL origin
@@ -18,5 +18,5 @@ ENV OBFS plain
 
 ENTRYPOINT ["/docker-entry.sh"]
 CMD ["server"]
-EXPOSE 8388
+EXPOSE 443
 
